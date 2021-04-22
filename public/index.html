@@ -26,7 +26,8 @@
 
   // loadSprite("player", "./img/player.png");
 
-  loadSprite("playerb", "./img/playerb.png");
+  // loadSprite("playerb", "./img/playerb.png");
+  loadSprite("playergoes", "./img/playergoes.png");
 
 
   // loadAseprite("player", "./img/player.png", ".img/player.json");
@@ -35,9 +36,13 @@
   loadSprite("coin", "./img/coin.png");
   loadSprite("steel3", "./img/steel3.png");
   loadSprite("steel2", "./img/steel2.png");
+  loadSprite("maconha", "./img/maconha.png");
+
+
+
 
   init({
-    width: 900 * 2, // width of canvas
+    width: 1100 * 2, // width of canvas
     height: 600 * 2, // height of canvas
     //fullscreen: true,
     scale: 1 / 2,
@@ -56,23 +61,21 @@
 
     const bg = add([
       sprite("bg"),
-      pos(-900, -800),
+      pos(-1200, -800),
 
     ]);
-
-
 
     const level1 = addLevel([
       "               -                ------                       -  -  -  -                                 - ------  ----           -                                                              ",
       "   -       -----                          ----          -  -                                        -                  -----  --    ---                                       -                 ",
-      "======   -         ---   ----         -             -                     -------                 -          -                           ---                              -      -----         ",
-      "======                     -                -    -                                             -                                                                      -                ",
-      "======              #-         ----     ---            -                              ---------                   -                                                -                   ",
-      "                            -                    -       -       -----                   -                                             -         -              -       -----               ",
-      "                           -                -              -                      -                       -                       -            -       -     -                           ",
-      "                      -              -   -                    -                -        --         -                   -      -        -  ----      -     -                               ",
-      "                                                   -                       -       ----                  ---------        -                                                             ",
-      "         == =          =======       =======                 =====            ====         ===  =    =======       =        =     ====                    ======           ============ ",
+      "======   -         ---   ----         -             -                     -------                 -          -                           ---                              -   **                 ",
+      "                                     -    -                                             -                                                                      -                         ",
+      "                == =  # ==   ---- -    ---            -                              ---------                   -                                                -                     ",
+      " =====     ====       =              -                    -       -       -----                                                                -         -              -                         ",
+      "       ====                    -                -              -                                             -                       -            -            -                         ",
+      "                      -              -   -                    -                -        --         -                   -      -        -  ----      -     -                              ",
+      "                                                   -                       -       ----                  ---------        -                                                            ",
+      "         == =          =======       =======                 =====            ====         ===  =    =======       =        =     ====                    ======           ========= ",
     ], {
       // TODO: derive grid size from sprite size instead of hardcode
       // grid size
@@ -92,13 +95,18 @@
         sprite("steel2"),
         solid(),
       ],
+      "*": [
+        sprite("maconha"),
+        "maconha",
+      ],
     });
 
 
     const player = add([
-      sprite("playerb"),
+      sprite("playergoes"),
       pos(0, 0),
       body(),
+      scale(3 / 2),
       {
         speed: 120,
       },
@@ -110,8 +118,6 @@
 
     // player.play("move");
 
-
-
     // jump with space
     keyPress("space", () => {
       // these 2 functions are provided by body() component
@@ -122,20 +128,21 @@
 
     keyDown("a", () => {
       player.move(-MOVE_SPEED, 0);
+      // player.sprite() = player.sprite('playergoes');
     });
 
     keyDown("d", () => {
       player.move(MOVE_SPEED, 0);
+
     });
 
   });
 
-  // player.collides("apple", (a) => {
+  // player.collides("maconha", (a) => {
   //   destroy(a);
   //   // as we defined in the big() component
-  //   player.biggify(3);
+  //   player.scale(2);
   // });
-
 
   start("main");
 </script>
