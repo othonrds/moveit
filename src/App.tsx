@@ -7,20 +7,20 @@ import './styles/global.css';
 
 const App = () => (
   <div>
-    <Button color="red">
-      Botão 1
+    <Button color="lightgreen">
+      Start
       </Button>
 
-    <Button color="blue">
-      Botão 2
+    <Button color="lightblue">
+      Pause
       </Button>
 
-    <Button color="green">
-      Botão 3
+    <Button color="lightgray">
+      Restart
       </Button>
 
-    <Word color="gray">
-      Test number 2
+    <Word color="black">
+      Jogo do Othim
     </Word>
   </div>
 );
